@@ -66,7 +66,6 @@ def main():
 
     def process_files(file_list, split_name):
         for fname in file_list:
-            # Kopiowanie zdjęcia
             src_img = os.path.join(data_dir, fname)
             dst_img = os.path.join(output_dir, 'images', split_name, fname)
 

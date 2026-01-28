@@ -79,7 +79,7 @@ def process_image_for_ocr(reader, image_input):
         return ""
 
 
-# --- FUNKCJA OCENY (WYMÓG PROJEKTOWY) ---
+
 def calculate_final_grade(accuracy_percent: float, processing_time_sec: float) -> float:
     """
     Calculates the final grade based on license plate OCR accuracy and processing time.
@@ -89,7 +89,7 @@ def calculate_final_grade(accuracy_percent: float, processing_time_sec: float) -
     Returns:
     - Grade on a scale from 2.0 to 5.0 (rounded to the nearest 0.5)
     """
-    if accuracy_percent < 60 or processing_time_sec > 60:  #
+    if accuracy_percent < 60 or processing_time_sec > 60:
         return 2.0
 
     accuracy_norm = (accuracy_percent - 60) / 40
@@ -99,7 +99,7 @@ def calculate_final_grade(accuracy_percent: float, processing_time_sec: float) -
 
     score = 0.7 * accuracy_norm + 0.3 * time_norm
 
-    grade = 2.0 + 3.0 * score  #
+    grade = 2.0 + 3.0 * score
 
     return round(grade * 2) / 2
 
@@ -156,7 +156,6 @@ def main():
             image_path = os.path.join(DATA_FOLDER, filename)
             expected_text = clean_text(ground_truth[filename])
 
-            # 1. Detekcja (YOLO)
             results = model.predict(image_path, conf=0.35, verbose=False)
 
             detected_crop = None
